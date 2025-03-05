@@ -1,0 +1,82 @@
+Checks when merging to DEV branch	
+	PR title prefix matches the user story
+	PR title matches changes introduces
+	PR body description has a link to Jira URL
+	Jira Task contains a link to the GitHub PR
+	All commits prefixes matches the user story (DEV-700 commits allowed)
+	Developer has assigned himself the PR
+	
+Deployments (not applicable to common repo)	
+	Build number in flo_sit.yml is the next available
+	flo_sit.yml is modified and SIT is not blocked due a deploy to PROD
+	Build number in flo_uat.yml is the same as latest build in SIT.
+	flo_uat.yml is modified and UAT is not blocked due a deploy to PROD
+	common updated to the latest available
+	
+Git comands for PR reviewal	
+	Local repository was updated to the latest commits (src and common)
+	PR branch was checkedout locally
+	git log --oneline line shows same number of PR commits above origin/DEV
+	git reset --soft origin/DEV (only if check above is OK)
+	Number of files in git changes matches number of files in PR
+	
+File  standards	
+	All files use CRLF and SPC (spaces instead of tabs)
+	Executed Remove and Sort usings on every code file did not found  changes to be made
+	All code files, no lines exceed the 120 characters limit (not applies to yml files)
+Clean code	
+	Namespaces should be synced
+	No unnecessary using statements are present.
+	Method and variables should be meaningful
+	Do not use "this" keyword. Class scoped (global) variables should start with prefix _
+	Local variables and private fields should be in camelCase
+	"Method and Properties names should be in PascalCase
+    public void CalculatePremium() { }
+    public decimal Premium { get; set; }"
+	No unnecessary white spaces were added (spaces, tabs, new lines)
+	Code has no unnecesary comments //  /* */
+	All methods are XML documented with reasonable description in every tag (does not apply to tests)
+	When the opening and closing tags of XML documentation are on separate lines, any content between the tags should be indented by an extra 4 spaces. Additionally, each tag should be positioned on its own line by themselves.
+	All files have a new line at the end of the file.
+Formatting	
+	No lines should be greater than 120 characters.
+	"Brackets should be in their own line (Allman style a.k.a BSD style)
+{ }"
+	A return statement should be followed by a blank line if it comes before another statement in the same block.
+  Indentation	
+	Additional indentation should be ONLY 4 spaces more than the previous indentation.
+	When a line is wrapped/broken into several lines, the following lines should have additional indentation.
+	If line starts with . it requires additional indentation (for method chaining)
+	"Logical, null-coalescing, and ternary operators that start a new line should maintain the same indentation level as the previous line.
+&& || ! ?? ??= ? :"
+  Line breaking rules	
+	When breaking parameter list (including lamda expression), each one of the parameters should be in their own line
+	When breaking lambda expression (input parameters and the lambda operator, e.g. x =>  or  (x, y) => should go in its own line if lamba expression is line broken
+      A line cannot start with these (should remain in the previous line)	
+	"No lines can start with any of these
+, ; )"
+	"No lines should start with open parenthesis (
+Exception: A line may start with ( only if used for grouping expressions."
+	"Relational, assignment and comparison operators remains in the previous line
+= += -= *= /= %= == != > < >= <="
+	"A line cannot start with lambda operator
+=>"
+	"No line can start with generic type opening or closing angle brackets < >, e.g.
+Task<
+    Dictionary<
+        string, Dictionary<string, object>>>"
+      No lines should end with these when breaking lines	
+	"No lines should end with logical, null-coalescing, ternary operators and unary operators. They go at the beginning of the new line and do not require additional indentation if previously indented by this rule.
+&& || ?? ??= ? : + - / *"
+Unitary test	
+	Clean and Build solution
+	Code contains unitary tests needed for new/updated code
+Evidences to be shown in Jira	
+1. Attach image of Sync Namespaces showing No namespaces needed updating.	
+2. Proof of Unitary tests results	
+3. Error list tab screenshot	
+	No IDE or CS codes are shown in Error list tab
+	No SonarLint warnings are shown (code prefix S) in Error list tab
+	No misspellings in Error list tab (please activate Edit / Advanced / Toggle Spell Checker)
+4. SonarQube results sceenshot	
+	Upload link to this file PR review checklist - DEV-1189
